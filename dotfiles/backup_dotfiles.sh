@@ -7,6 +7,10 @@ cp ~/.config/i3/config ./i3/config
 cp ~/.config/polybar/config.ini ./polybar/config
 cp ~/.config/polybar/spotify_status.py ./polybar/spotify_status.py
 
+# Rofi
+cp ~/.config/rofi/config.rasi ./rofi/config
+cp ~/.config/rofi/bluetooth_connect.sh ./rofi/bluetooth_connect.sh
+
 # Picom
 cp ~/.config/picom.conf ./picom.conf
 
