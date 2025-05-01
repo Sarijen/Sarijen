@@ -3,28 +3,32 @@
   borderless = True
   tab_position = hidden
   scroll_tabbar = True
-  inactive_color_offset = 0.6944444444444444
+  inactive_color_offset = 0.7058823529411765
   suppress_multiple_term_dialog = True
   title_at_bottom = True
 [keybindings]
   split_horiz = <Primary><Shift>y
   split_vert = <Primary><Shift>a
+  close_term = <Alt>plus
 [profiles]
   [[default]]
     icon_bell = False
-    background_darkness = 0.82
+    background_darkness = 0.75
     background_type = transparent
     cursor_shape = underline
     cursor_fg_color = "#000000"
     cursor_bg_color = "#00ff00"
     font = FiraCode Nerd Font Mono 21
     foreground_color = "#31ff2a"
+    show_titlebar = False
     scrollbar_position = hidden
     scrollback_lines = 4000
     palette = "#000000:#cd0000:#00cd00:#cdcd00:#0000ee:#cd00cd:#00cdcd:#e5e5e5:#7f7f7f:#ff0000:#00ff00:#ffff00:#5c5cff:#ff00ff:#00ffff:#ffffff"
     use_system_font = False
     title_transmit_fg_color = "#000000"
     title_transmit_bg_color = "#000000"
+    title_receive_fg_color = "#000000"
+    title_receive_bg_color = "#000000"
     title_inactive_fg_color = "#241f31"
     title_inactive_bg_color = "#241f31"
 [layouts]

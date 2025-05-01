@@ -26,7 +26,7 @@ green  = #1DB954
 [bar/bar1]
 width = 100%
 height = 20pt
-radius = 8 
+radius = 0
 
 background = ${colors.background}
 foreground = ${colors.foreground}
@@ -171,25 +171,6 @@ type = internal/xwindow
 ;restrict length to 45 characters
 label = %title:0:45:...%
 
-;[module/github]
-;type = internal/github
-
-;token = your token
-;user = your username
-
-;empty-notifications = true
-
-;interval = 10
-
-;api-url = https://api.github.com/
-
-;format =  <label>
-;label = %notifications%
-
-; Used when GitHub can't be reached
-format-offline = <label-offline>
-label-offline = Offline
-
 [module/pulseaudio]
 type = internal/pulseaudio
 
@@ -224,7 +205,7 @@ label = %percentage_used:2%%
 [module/cpu]
 type = internal/cpu
 interval = 10
-format-prefix = "󰍛 "
+format-prefix = "CPU "
 format-prefix-foreground = ${colors.primary}
 label = %percentage:2%%
 
@@ -261,7 +242,7 @@ bar-capacity-width = 4
 type = internal/date
 interval = 60
 
-date = %H:%M  %d.%m
+date = %H:%M | %d/%m
 date-alt = %m-%d %H:%M:%S
 
 label = %date%

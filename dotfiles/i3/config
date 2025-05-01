@@ -1,15 +1,26 @@
-# i3 Sarijen config file 
-#
-# https://i3wm.org/docs/userguide.html reference
+# == Sarijen i3 config ==
+
+set $Alt Mod1
+set $Super Mod4
 
 # Polybar <3
 exec_always --no-startup-id killall polybar
-exec_always --no-startup-id polybar bar1 &
+exec_always sleep 1;
+exec_always --no-startup-id polybar bar1
 
 # Wallpaper Feh
-exec_always feh --bg-scale ~/Pictures/Wallpapers/wallhaven-p96odm.png
+exec_always feh --bg-scale ~/Pictures/Wallpapers/wallhaven-85meoy.jpg
 
-gaps outer 5
+# Screenshots TO-DO
+
+
+# Class name:           border     background   text       indicator   child_border
+client.focused          #7e57c2    #6402db      #ffffff    #b39ddb     #7e57c2
+client.focused_inactive #6a1b9a    #6402db      #dddddd    #9575cd     #6a1b9a
+client.unfocused        #4a148c    #4a148c      #bbbbbb    #7e57c2     #4a148c
+client.urgent           #b71c1c    #b71c1c      #ffffff    #ff1744     #b71c1c
+
+gaps inner 5
 
 # Enable touchpad tap to click and normal scroll
 exec_always --no-startup-id xinput set-prop 10 "libinput Tapping Enabled" 1
@@ -18,23 +29,22 @@ exec_always --no-startup-id xinput set-prop 10 "libinput Natural Scrolling Enabl
 # xcompmgr compositor
 #exec --no-startup-id xcompmgr -c -C -t-5 -l-5 -r4 -o.55 &
 
-# Font for window titles. Will also be used by the bar unless a different font
-# is used in the bar {} block below.
+# picom compositor
+exec --no-startup-id picom -b --config ~/.config/picom.conf
+
+# Auto drive mounting UDISKIE
+exec udiskie -N
+
+# Font
 font pango:Hack Nerd Font Mono:style=Regular
 
-# Start XDG autostart .desktop files using dex. See also
-# https://wiki.archlinux.org/index.php/XDG_Autostart
+# Start XDG autostart .desktop files using dex.
 exec --no-startup-id dex --autostart --environment i3
 
-# The combination of xss-lock, nm-applet and pactl is a popular choice, so
-# they are included here as an example. Modify as you see fit.
+# i3lock for simple screenlock
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork -c 000000 -u
 
-# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
-# screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-
-# NetworkManager is the most popular way to manage wireless networks on Linux,
-# and nm-applet is a desktop environment-independent system tray GUI for it.
+# The NetworkManager
 exec --no-startup-id nm-applet
 
 # Use pactl to adjust volume in PulseAudio
@@ -45,89 +55,50 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ to
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 # Use brightnessctl to adjust brigthness (obviously)
-bindsym $mod+F5 exec brightnessctl set 10%-
-bindsym $mod+F6 exec brightnessctl set +10%
+bindsym F5 exec brightnessctl set 2%-
+bindsym F6 exec brightnessctl set +2%
 
-# use these keys for focus, movement, and resize directions when reaching for the arrows is not convenient
-set $up l
-set $down k
-set $left j
-set $right semicolon
+# Vimbindings <3 for navigation instead of touchpad ew
+set $up k
+set $down j
+set $left h
+set $right l
 
-# use Mouse+Mod1 to drag floating windows to their wanted position
-floating_modifier Mod1
-
-bindsym Mod1+s exec rofi -show drun
-
-# move tiling windows via drag & drop by left-clicking into the title bar,
-# or left-clicking anywhere into the window while holding the floating modifier.
-tiling_drag modifier titlebar
+# Rofi for quick software launch
+bindsym $Alt+s exec rofi -show drun
 
 # start a terminal
-bindsym Mod1+Return exec i3-sensible-terminal
+bindsym $Alt+Return exec i3-sensible-terminal
 
 # kill focused window
-bindsym Mod1+Shift+q kill
+bindsym $Alt+Shift+q kill
 
 # change focus
-bindsym Mod1+$left focus left
-bindsym Mod1+$down focus down
-bindsym Mod1+$up focus up
-bindsym Mod1+$right focus right
-
-# alternatively, you can use the cursor keys:
-bindsym Mod1+Left focus left
-bindsym Mod1+Down focus down
-bindsym Mod1+Up focus up
-bindsym Mod1+Right focus right
+bindsym $Alt+$left focus left
+bindsym $Alt+$down focus down
+bindsym $Alt+$up focus up
+bindsym $Alt+$right focus right
 
 # move focused window
-bindsym Mod1+Shift+$left move left
-bindsym Mod1+Shift+$down move down
-bindsym Mod1+Shift+$up move up
-bindsym Mod1+Shift+$right move right
-
-# alternatively, you can use the cursor keys:
-bindsym Mod1+Shift+Left move left
-bindsym Mod1+Shift+Down move down
-bindsym Mod1+Shift+Up move up
-bindsym Mod1+Shift+Right move right
+bindsym $Alt+Shift+$left move left
+bindsym $Alt+Shift+$down move down
+bindsym $Alt+Shift+$up move up
+bindsym $Alt+Shift+$right move right
 
 # split in horizontal orientation
-bindsym Mod1+h split h
+bindsym $Super+a split h
 
 # split in vertical orientation
-bindsym Mod1+v split v
+bindsym $Super+v split v
 
 # enter fullscreen mode for the focused container
-bindsym Mod1+f fullscreen toggle
+bindsym $Alt+f fullscreen toggle
 
-# change container layout (stacked, tabbed, toggle split)
-#bindsym Mod1+s layout stacking
-bindsym Mod1+w layout tabbed
-bindsym Mod1+e layout toggle split
+# change window :wlayout
+bindsym $Alt+w layout tabbed
+bindsym $Alt+e layout toggle split
 
-# toggle tiling / floating
-bindsym Mod1+Shift+space floating toggle
-
-# change focus between tiling / floating windows
-bindsym Mod1+space focus mode_toggle
-
-# focus the parent container
-bindsym Mod1+a focus parent
-
-# focus the child container
-#bindsym Mod1+d focus child
-
-# move the currently focused window to the scratchpad
-bindsym Mod1+Shift+minus move scratchpad
-
-# Show the next scratchpad window or hide the focused scratchpad window.
-# If there are multiple scratchpad windows, this command cycles through them.
-bindsym Mod1+minus scratchpad show
-
-# Define names for default workspaces for which we configure key bindings later on.
-# We use variables to avoid repeating the names in multiple places.
+# Workspace aliases
 set $ws1 "1"
 set $ws2 "2"
 set $ws3 "3"
@@ -164,33 +135,23 @@ bindsym Mod1+Shift+9 move container to workspace number $ws9
 bindsym Mod1+Shift+0 move container to workspace number $ws10
 
 # reload the configuration file
-bindsym Mod1+Shift+c reload
+bindsym $Alt+Shift+c reload
+
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym Mod1+Shift+r restart
+bindsym $Alt+Shift+r restart
+
 # exit i3 (logs you out of your X session)
-bindsym Mod1+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $Alt+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Please get me out of here' 'i3-msg exit'"
 
-# resize window (you can also use the mouse for that)
+# Resize mode trigger
+bindsym $Alt+r mode "resize"
+
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
+    bindsym $right resize shrink width 30
+    bindsym $up resize grow height 30
+    bindsym $down resize shrink height 30
+    bindsym $left resize grow width 30
 
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym $left       resize shrink width 10 px or 10 ppt
-        bindsym $down       resize grow height 10 px or 10 ppt
-        bindsym $up         resize shrink height 10 px or 10 ppt
-        bindsym $right      resize grow width 10 px or 10 ppt
-
-        # same bindings, but for the arrow keys
-        bindsym Left        resize shrink width 10 px or 10 ppt
-        bindsym Down        resize grow height 10 px or 10 ppt
-        bindsym Up          resize shrink height 10 px or 10 ppt
-        bindsym Right       resize grow width 10 px or 10 ppt
-
-        # back to normal: Enter or Escape or Mod1+r
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym Mod1+r mode "default"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
 }
