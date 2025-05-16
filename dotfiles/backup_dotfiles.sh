@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# vimrc
+cp ~/.vimrc ./.vimrc
+
 # i3
 cp ~/.config/i3/config ./i3/config
 

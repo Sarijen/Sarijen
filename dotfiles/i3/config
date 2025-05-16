@@ -47,6 +47,9 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork -c 000000
 # Rofi for quick software launch
 bindsym $Alt+s exec rofi -show drun
 
+# Flameshot for screenshots
+bindsym Print exec flameshot gui
+
 # Bluetooth connect with rofi
 bindsym $Super+b exec --no-startup-id ~/.config/rofi/bluetooth_connect.sh
 
