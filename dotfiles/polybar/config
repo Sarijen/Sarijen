@@ -13,12 +13,12 @@
 ; :3
 
 [colors]
-background = #282c3c 
+background = #1e1e1f
 background-alt = #1D2233
 foreground = #C5C8C6
-primary = #B16286
-secondary = #8ABEB7
+primary = #7010ff
 alert = #A54242
+warning = #FFCC00
 disabled = #707880
 white = #f7f9f7
 green  = #1DB954
@@ -65,11 +65,12 @@ enable-ipc = true
 
 [module/spotify]
 type = custom/script
-interval = 10
-format-prefix = "󰓇  "
+interval = 8
+format-prefix = "󰓇 "
 format-prefix-foreground = ${colors.white}
 format = <label>
 exec = python3 ~/.config/polybar/spotify_status.py -f '{artist}: {song}'
+
 click-left = playerctl --player=spotify play-pause 
 click-right = playerctl --player=spotify next 
 click-middle = playerctl --player=spotify previous 
@@ -88,7 +89,7 @@ unknown-as-up = false
 format-connected = <ramp-signal> <label-connected>
 format-disconnected = <label-disconnected> 
 
-label-connected = %essid:0:25%
+label-connected = %essid:0:20%
 label-connected-padding-right = 0
 
 label-disconnected = 󰤭
@@ -168,7 +169,6 @@ label-empty-padding = 1
 
 [module/xwindow]
 type = internal/xwindow
-;restrict length to 45 characters
 label = %title:0:45:...%
 
 [module/pulseaudio]
@@ -193,7 +193,7 @@ label-layout-foreground = ${colors.primary}
 label-indicator-padding = 0
 label-indicator-margin = 0
 label-indicator-foreground = ${colors.background}
-label-indicator-background = ${colors.secondary}
+label-indicator-background = ${colors.primary}
 
 [module/memory]
 type = internal/memory
@@ -236,6 +236,10 @@ ramp-capacity-2 = 󰁾
 ramp-capacity-3 = 󰂀
 ramp-capacity-4 = 󰁹
 
+ramp-capacity-0-foreground = ${colors.alert}
+ramp-capacity-2-foreground = ${colors.warning}
+ramp-capacity-4-foreground = #66DD00
+
 bar-capacity-width = 4
 
 [module/date]
@@ -249,13 +253,6 @@ label = %date%
 label-foreground = ${colors.white}
 
 [settings]
-
-screenchange-reload = false
-
-compositing-background = source
-compositing-foreground = over
-compositing-overline = over
-compositing-underline = over
-compositing-border = over
+screenchange-reload = true
 
 pseudo-transparency = true

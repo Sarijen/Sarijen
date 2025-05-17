@@ -35,8 +35,8 @@ nnoremap d "_d
 " Puts yanked text to system clipboard in visual mode
 vnoremap y "+y
 
-" ==================== HIGHLIGHTING / COLORS ==================
 
+" ==================== HIGHLIGHTING / COLORS ==================
 
 " Change Line numbering color to gray
 highlight LineNr ctermfg=gray guifg=#888888
@@ -62,10 +62,9 @@ endfunction
 
 " ==================== PLUGINS ==================
 
-
 call plug#begin()
 
-Plug 'vimsence/vimsence'
+"Plug 'vimsence/vimsence'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 
 call plug#end()
