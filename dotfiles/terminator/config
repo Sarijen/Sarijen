@@ -10,6 +10,7 @@
   split_horiz = <Primary><Shift>y
   split_vert = <Primary><Shift>a
   close_term = <Alt>plus
+  help = parenright
 [profiles]
   [[default]]
     icon_bell = False
@@ -22,7 +23,7 @@
     foreground_color = "#31ff2a"
     show_titlebar = False
     scrollbar_position = hidden
-    scrollback_lines = 4000
+    scrollback_lines = 6000
     palette = "#000000:#cd0000:#00cd00:#cdcd00:#0000ee:#cd00cd:#00cdcd:#e5e5e5:#7f7f7f:#ff0000:#00ff00:#ffff00:#5c5cff:#ff00ff:#00ffff:#ffffff"
     use_system_font = False
     title_transmit_fg_color = "#000000"

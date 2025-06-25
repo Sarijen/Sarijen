@@ -8,13 +8,17 @@ set $Super Mod4
 exec_always --no-startup-id killall polybar
 
 # Wallpaper Feh
-exec_always feh --bg-scale ~/Pictures/Wallpapers/wallhaven-85meoy.jpg
+exec --no-startup-id feh --bg-scale --randomize ~/Pictures/Wallpapers/
 
-# Class name:           border     background   text       indicator   child_border
-client.focused          #7e57c2    #6402db      #ffffff    #b39ddb     #7e57c2
-client.focused_inactive #6a1b9a    #6402db      #dddddd    #9575cd     #6a1b9a
-client.unfocused        #4a148c    #4a148c      #bbbbbb    #7e57c2     #4a148c
-client.urgent           #b71c1c    #b71c1c      #ffffff    #ff1744     #b71c1c
+default_border normal 3
+default_border pixel 6
+
+#                       Title      Title        Title      New window     Outline
+# Class name:           border     background   text       indicator   Border
+client.focused          #6402db    #6402db      #ffffff    #6402db     #6402db
+client.focused_inactive #6402db    #6402db      #ffffff    #6402db     #6402db
+client.unfocused        #4a148c    #4a148c      #bbbbbb    #4a148c     #4a148c
+client.urgent           #b71c1c    #b71c1c      #ffffff    #b71c1c     #b71c1c
 
 # Small gaps gang right here
 gaps inner 5
@@ -22,15 +26,16 @@ gaps inner 5
 # Enable touchpad tap to click and normal scroll because im sane
 exec_always --no-startup-id xinput set-prop 10 "libinput Tapping Enabled" 1
 exec_always --no-startup-id xinput set-prop 10 "libinput Natural Scrolling Enabled" 1
+focus_follows_mouse no
 
-# xcompmgr compositor
+# xcompmgr compositor (just in case picom screws me over)
 #exec --no-startup-id xcompmgr -c -C -t-5 -l-5 -r4 -o.55 &
 
 # picom compositor
 exec_always --no-startup-id picom -b --config ~/.config/picom.conf
 
 # Auto drive mounting UDISKIE
-exec udiskie -N
+exec --no-startup-id udiskie -N
 
 # Font
 font pango:Hack Nerd Font Mono:style=Regular
@@ -61,8 +66,8 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ to
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 # Use brightnessctl to adjust brigthness (obviously)
-bindsym F5 exec brightnessctl set 2%-
-bindsym F6 exec brightnessctl set +2%
+bindsym F5 exec --no-startup-id brightnessctl set 2%-
+bindsym F6 exec --no-startup-id brightnessctl set +2%
 
 # Vimbindings <3 for navigation instead of touchpad ew
 set $up k
@@ -70,8 +75,8 @@ set $down j
 set $left h
 set $right l
 
-# Start  The Terminal (TM)
-bindsym $Alt+Return exec i3-sensible-terminal
+# Start The Terminal (TM)
+bindsym $Alt+Return exec --no-startup-id i3-sensible-terminal
 
 # Kill focused window
 bindsym $Alt+Shift+q kill
@@ -144,16 +149,16 @@ bindsym $Alt+Shift+c reload
 bindsym $Alt+Shift+r restart
 
 # Exit i3 (logs you out of your X session)
-bindsym $Alt+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Please get me out of here' 'i3-msg exit'"
+bindsym $Alt+Shift+e exec --no-startup-id "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Please get me out of here' 'i3-msg exit'"
 
 # Resize mode trigger
 bindsym $Alt+r mode "resize"
 
 mode "resize" {
-    bindsym $right resize shrink width 30
-    bindsym $up resize grow height 30
-    bindsym $down resize shrink height 30
-    bindsym $left resize grow width 30
+    bindsym $right resize shrink width 20
+    bindsym $up resize grow height 20
+    bindsym $down resize shrink height 20
+    bindsym $left resize grow width 20
 
     bindsym Return mode "default"
     bindsym Escape mode "default"

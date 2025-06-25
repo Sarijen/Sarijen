@@ -19,3 +19,7 @@ cp ~/.config/picom.conf ./picom.conf
 
 # Terminator
 cp ~/.config/terminator/config ./terminator/config
+
+# Htop
+
+cp ~/.config/htop/htoprc ./htoprc
