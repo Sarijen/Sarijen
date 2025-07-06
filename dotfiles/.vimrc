@@ -20,10 +20,10 @@ if has("autocmd")
 endif
 
 " Disable autocommenting after pressing Enter or O
-" For some reason it doesnt work (please help, i hate this feature)
-
-set formatoptions-=o
-set formatoptions-=r
+" You have to put this one in: ~/.vim/after/ftplugin/c.vim
+" setlocal formatoptions-=cro
+" I only managed to figure out file type specific, but I mostly program in C so its
+" fine
 
 " Bind switching between opened files with TAB
 nnoremap <Tab> <C-^>

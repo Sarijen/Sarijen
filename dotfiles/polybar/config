@@ -47,7 +47,6 @@ dim-value = 1.0
 wm-name = i3
 override-redirect = false
 wm-restack = i3
-monitor-fallback =
 locale =
 
 separator = |
@@ -103,6 +102,13 @@ ramp-signal-2 = 󰤢
 ramp-signal-3 = 󰤢
 ramp-signal-4 = 󰤥
 ramp-signal-5 = 󰤨
+
+ramp-signal-0-foreground = ${colors.alert}
+ramp-signal-1-foreground = ${colors.warning}
+ramp-signal-2-foreground = ${colors.warning}
+ramp-signal-3-foreground = #FFFFFF
+ramp-signal-4-foreground = #FFFFFF
+ramp-signal-5-foreground = #FFFFFF
 
 [module/i3]
 type = internal/i3
@@ -250,8 +256,9 @@ bar-capacity-width = 4
 type = internal/date
 interval = 60
 
-date = %H:%M | %d/%m
-date-alt = %m-%d %H:%M:%S
+# en.cppreference.com/w/cpp/io/manip/put_time
+date = "%H:%M |%e/%m"
+date-alt = %A, %B %d. %Y
 
 label = %date%
 label-foreground = ${colors.white}

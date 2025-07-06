@@ -1,5 +1,4 @@
 # == Sarijen i3 config ==
-# Yes I'm using X11 deal with it
 
 set $Alt Mod1
 set $Super Mod4
@@ -64,6 +63,10 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+
+bindsym XF86AudioPlay exec --nostartup-id playerctl play-pause
+bindsym XF86AudioNext exec --nostartup-id playerctl next
+bindsym XF86AudioPrev exec --nostartup-id playerctl previous
 
 # Use brightnessctl to adjust brigthness (obviously)
 bindsym F5 exec --no-startup-id brightnessctl set 2%-

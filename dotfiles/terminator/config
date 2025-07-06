@@ -10,7 +10,7 @@
   split_horiz = <Primary><Shift>y
   split_vert = <Primary><Shift>a
   close_term = <Alt>plus
-  help = parenright
+  help = None
 [profiles]
   [[default]]
     icon_bell = False
