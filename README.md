@@ -10,6 +10,6 @@
 
 Started coding on September 9. 2022
 
-Passionate about Embedded
+Embedded guy
 
 Vim + Debian Linux + cheap laptop is my workflow
