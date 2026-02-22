@@ -88,10 +88,10 @@ unknown-as-up = false
 format-connected = <ramp-signal> <label-connected>
 format-disconnected = <label-disconnected>
 
-label-connected = %essid:0:19%
+label-connected = %essid:0:14%
 label-connected-padding-right = 0
 
-label-disconnected = 󰤭
+label-disconnected = 󰤭 
 label-disconnected-foreground = ${colors.alert}
 label-disconnected-padding-right = 0
 
@@ -257,7 +257,7 @@ type = internal/date
 interval = 60
 
 # en.cppreference.com/w/cpp/io/manip/put_time
-date = "%H:%M |%e/%m"
+date = "%H:%M | %e/%m"
 date-alt = %A, %B %d. %Y
 
 label = %date%

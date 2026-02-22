@@ -8,6 +8,7 @@ exec_always --no-startup-id killall polybar
 
 # Wallpaper Feh
 exec --no-startup-id feh --bg-scale --randomize ~/Pictures/Wallpapers/
+bindsym $Super+w exec --no-startup-id feh --bg-scale --randomize ~/Pictures/Wallpapers/
 
 default_border normal 3
 default_border pixel 6
@@ -25,6 +26,8 @@ gaps inner 5
 # Enable touchpad tap to click and normal scroll because im sane
 exec_always --no-startup-id xinput set-prop 10 "libinput Tapping Enabled" 1
 exec_always --no-startup-id xinput set-prop 10 "libinput Natural Scrolling Enabled" 1
+exec_always --no-startup-id xinput set-prop 10 "libinput Disable While Typing Enabled" 0
+
 focus_follows_mouse no
 
 # xcompmgr compositor (just in case picom screws me over)
@@ -64,13 +67,14 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
-bindsym XF86AudioPlay exec --nostartup-id playerctl play-pause
-bindsym XF86AudioNext exec --nostartup-id playerctl next
-bindsym XF86AudioPrev exec --nostartup-id playerctl previous
+                       
+bindsym --release Shift+XF86AudioPlay exec --no-startup-id playerctl play-pause
+bindsym --release Shift+XF86AudioPrev exec --no-startup-id playerctl previous
+bindsym --release Shift+XF86AudioNext exec --no-startup-id playerctl next
 
 # Use brightnessctl to adjust brigthness (obviously)
-bindsym F5 exec --no-startup-id brightnessctl set 2%-
-bindsym F6 exec --no-startup-id brightnessctl set +2%
+bindsym F5 exec --no-startup-id brightnessctl set 3%-
+bindsym F6 exec --no-startup-id brightnessctl set +3%
 
 # Vimbindings <3 for navigation instead of touchpad ew
 set $up k
