@@ -57,9 +57,6 @@ bindsym Print exec flameshot gui
 # Bluetooth connect with rofi
 bindsym $Super+b exec --no-startup-id ~/.config/rofi/bluetooth_connect.sh
 
-# The NetworkManager
-exec --no-startup-id nm-applet
-
 # Use pactl to adjust volume in PulseAudio
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
