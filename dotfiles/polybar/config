@@ -104,7 +104,7 @@ type = internal/i3
 pin-workspaces = false
 show-urgent = true
 strip-wsnumbers = false
-index-sort = false
+index-sort = true
 enable-click = true
 enable-scroll = true
 wrapping-scroll = true
@@ -118,22 +118,22 @@ label-mode-padding = 1
 label-mode-background = #e60053
 
 ;settings label focused
-label-focused = %index%
+label-focused = %name%
 label-focused-foreground = #ffffff
 label-focused-background = ${colors.background-alt}
 label-focused-underline = ${colors.white}
 label-focused-padding = 1
 
 ;settings label not focused
-label-unfocused = %index%
+label-unfocused = %name%
 label-unfocused-padding = 1
 
-label-visible = %index%
+label-visible = %name%
 label-visible-underline = #555555
 label-visible-padding = 1
 
 ;settings urgent 
-label-urgent = %index%
+label-urgent = %name%
 label-urgent-foreground = ${colors.white}
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 1

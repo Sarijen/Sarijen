@@ -25,6 +25,13 @@ enum layers{
     WIN_FN
 };
 
+#define KC_TASK LGUI(KC_TAB)
+#define KC_FLXP LGUI(KC_E)
+
+enum custom_keycodes {
+  SNIP_TOOL = SAFE_RANGE,
+};
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [MAC_BASE] = LAYOUT_tkl_ansi(
         KC_ESC,             RM_VALD,  RM_VALU,  KC_NO,    KC_NO,    RM_VALD,  RM_VALU,  KC_MPRV,  KC_MPLY,  KC_MNXT,  KC_MUTE,  KC_VOLD,    KC_VOLU,  KC_NO,    KC_NO,    RM_NEXT,
@@ -51,17 +58,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_LCTL,  KC_LWIN,  KC_LALT,                                KC_SPC,                                 KC_RALT,  KC_RWIN,  MO(WIN_FN), KC_RCTL,  KC_LEFT,  KC_DOWN,  KC_RGHT),
 
     [WIN_FN] = LAYOUT_tkl_ansi(
-        QK_BOOT,            RM_VALD,  RM_VALU,  _______,  _______,  _______,  _______,  _______,  _______,  KC_MUTE,  KC_MPRV,  KC_MPLY,    KC_MNXT,  _______,  _______,  RM_TOGG,
-        _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  KC_SLEP,    _______,  _______,  _______,  _______,
-        _______,  _______,  _______,  _______,  RM_SATU,  RM_SPDU,  _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______,  _______,  _______,
+        QK_BOOT,            RM_VALD,  RM_VALU,  _______,  _______,  _______,  _______,  _______,  _______,  KC_MUTE,  KC_MPRV,  KC_MPLY,    KC_MNXT,  SNIP_TOOL,  _______,  RM_TOGG,
+        _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  KC_SLEP,    _______,  _______,    _______,  _______,
+        _______,  _______,  _______,  _______,  RM_SATU,  RM_SPDU,  _______,  _______,  _______,  _______,  _______,  _______,  _______,    _______,  _______,    _______,  _______,
         KC_CAPS,  _______,  _______,  _______,  RM_SATD,  RM_SPDD,  _______,  _______,  _______,  _______,  _______,  _______,              _______,
-        _______,            _______,  _______,  _______,  _______,  _______,  NK_TOGG,  _______,  _______,  _______,  _______,              _______,            _______,
-        _______,  _______,  _______,                                _______,                                _______,  _______,  _______,    _______,  KC_VOLD,  _______,  KC_VOLU),
+        _______,            _______,  _______,  _______,  _______,  _______,  NK_TOGG,  _______,  _______,  _______,  _______,              _______,              _______,
+        _______,  _______,  _______,                                _______,                                _______,  _______,  _______,    _______,  KC_VOLD,    _______,  KC_VOLU),
 
 /* Function Layout
 *       ┌───────┐       ┌───────┬───────┬───────┬───────┬───────┬───────┬───────┬───────┬───────┬───────┬───────┬───────┐┌───────┬───────┬───────┐
-*       │ Boot  │       │ Brig+ │ Brig- │       │       │       │       │       │       │ Mute  │ Prev  │ Play  │ Next  ││       │       │ RGB   │
-*       │ loader│       │       │       │       │       │       │       │       │       │       │ Song  │ Pause │ Song  ││       │       │ Toggle│
+*       │ Boot  │       │ Brig+ │ Brig- │       │       │       │       │       │       │ Mute  │ Prev  │ Play  │ Next  ││ SNIP  │       │ RGB   │
+*       │ loader│       │       │       │       │       │       │       │       │       │       │ Song  │ Pause │ Song  ││ TOOL  │       │ Toggle│
 *       └───────┘       └───────┴───────┴───────┴───────┴───────┴───────┴───────┴───────┴───────┴───────┴───────┴───────┘└───────┴───────┴───────┘
 *       ┌───────┬───────┬───────┬───────┬───────┬───────┬───────┬───────┬───────┬───────┬───────┬───────┬───────────────┐┌───────┬───────┬───────┐
 *       │       │       │       │       │       │       │       │       │       │       │       │ Goto  │               ││       │       │       │
@@ -81,3 +88,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 *       └───────┴───────┴───────┴───────────────────────────────────────────────────────┴───────┴───────┴───────┴───────┘└───────┴───────┴───────┘
 */
 };
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  switch(keycode) {
+    case SNIP_TOOL:
+      if (record->event.pressed) {
+        register_code(KC_LSFT);
+        register_code(KC_LGUI);
+        SEND_STRING("s");
+      } else {
+        unregister_code(KC_LSFT);
+        unregister_code(KC_LGUI);
+      }
+      break;
+  }
+  return true;
+}

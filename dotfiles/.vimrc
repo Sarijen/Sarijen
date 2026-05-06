@@ -1,15 +1,17 @@
-" === SARIJEN VIMRC FILE ===
+" =============================================================
+" =                 = SARIJEN VIMRC FILE =                    =
+" =============================================================
 
 
-" Use 2 real spaces instead of 4-long-spaces TAB
+" Use 2 real spaces instead of 4-spaces-log TABs
 set tabstop=2
 set shiftwidth=2
 set expandtab
 
 set number " Enables Line numbering
-set hid " Allows file switching without always saving
-set so=7 " Minimum lines below/above cursor when scrolling
-syntax on " Syntax Highlighting
+set hid    " Allows file switching without always saving
+set so=7   " Minimum lines below/above cursor when scrolling
+syntax on  " Syntax Highlighting
 
 " Remember the cursor position when reopening a file
 if has("autocmd")
@@ -22,10 +24,8 @@ endif
 " Disable autocommenting after pressing Enter or O
 " You have to put this one in: ~/.vim/after/ftplugin/c.vim
 " setlocal formatoptions-=cro
-" I only managed to figure out file type specific, but I mostly program in C so its
-" fine
 
-" Bind switching between opened files with TAB
+" Bind switching between opened files to TAB
 nnoremap <Tab> <C-^>
 
 " Disables yanking when deleting with X and D
@@ -35,8 +35,13 @@ nnoremap d "_d
 " Puts yanked text to system clipboard in visual mode
 vnoremap y "+y
 
+" Disable Ex mode. More like Ew mode to me
+nnoremap Q <nop>
 
+
+" =============================================================
 " ==================== HIGHLIGHTING / COLORS ==================
+" =============================================================
 
 " Change Line numbering color to gray
 highlight LineNr ctermfg=gray guifg=#888888
@@ -60,11 +65,9 @@ highlight cUserFunction guifg=#74c7ec
 endfunction
 
 
-" ==================== PLUGINS ==================
-
+" =============================================================
+" =========================== PLUGINS =========================
+" =============================================================
 call plug#begin()
-
-"Plug 'vimsence/vimsence'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
-
 call plug#end()

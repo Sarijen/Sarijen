@@ -10,6 +10,6 @@
 
 Started coding on September 9. 2022
 
-Embedded guy
+Firmware dev
 
-Vim + Debian Linux + cheap laptop is my workflow
+Vim + i3wm + Debian + cheap laptop is my coding workflow
