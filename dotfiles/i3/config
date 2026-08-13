@@ -7,8 +7,8 @@ set $Super Mod4
 exec_always --no-startup-id killall polybar
 
 # Wallpaper Feh
-exec --no-startup-id feh --bg-scale --randomize ~/Pictures/Wallpapers/
-bindsym $Super+w exec --no-startup-id feh --bg-scale --randomize ~/Pictures/Wallpapers/
+exec --no-startup-id feh --bg-fill --randomize ~/Pictures/Wallpapers/
+bindsym $Super+w exec --no-startup-id feh --bg-fill --randomize ~/Pictures/Wallpapers/
 
 default_border normal 3
 default_border pixel 6
@@ -70,8 +70,8 @@ bindsym --release $Alt+Shift+Left exec --no-startup-id playerctl previous
 bindsym --release $Alt+Shift+Right exec --no-startup-id playerctl next
 
 # Use brightnessctl to adjust brigthness (obviously)
-bindsym F5 exec --no-startup-id brightnessctl set 5%-
-bindsym F6 exec --no-startup-id brightnessctl set +5%
+bindsym F5 exec --no-startup-id brightnessctl set 3%-
+bindsym F6 exec --no-startup-id brightnessctl set +3%
 
 # Vimbindings <3 for navigation instead of touchpad ew
 set $up k

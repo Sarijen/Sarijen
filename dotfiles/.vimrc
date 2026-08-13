@@ -3,12 +3,14 @@
 " =============================================================
 
 
-" Use 2 real spaces instead of 4-spaces-log TABs
+" Use 2 real spaces instead of 4-spaces-long TABs
 set tabstop=2
 set shiftwidth=2
 set expandtab
 
-set number " Enables Line numbering
+set relativenumber " Enables relative line numbering
+set number " Enables current line numbering
+
 set hid    " Allows file switching without always saving
 set so=7   " Minimum lines below/above cursor when scrolling
 syntax on  " Syntax Highlighting
@@ -39,6 +41,7 @@ vnoremap y "+y
 nnoremap Q <nop>
 
 
+
 " =============================================================
 " ==================== HIGHLIGHTING / COLORS ==================
 " =============================================================
@@ -64,6 +67,12 @@ highlight cInclude guifg=#04a5e5
 highlight cUserFunction guifg=#74c7ec
 endfunction
 
+
+" Set C++ template files filetype
+augroup cpp_tpp
+    autocmd!
+    autocmd BufRead,BufNewFile *.tpp set filetype=cpp
+augroup END
 
 " =============================================================
 " =========================== PLUGINS =========================

@@ -212,7 +212,7 @@ low-at = 20
 battery = BAT0
 adapter = ADP1
 
-poll-interval = 120
+poll-interval = 60
 time-format = %H:%M
 
 format-charging = 󰂄 <label-charging>

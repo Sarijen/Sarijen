@@ -1,8 +1,9 @@
 " === SARIJEN _VIMRC FILE ===
 " ts 10x better than notepad, why didn't i switch earlier?
+" still not as good as in Linux
 
 
-" Use 2 real spaces instead of 4-long-spaces TAB
+" Use 2 real spaces instead of 4-spaces-long TAB
 set tabstop=2
 set shiftwidth=2
 set expandtab
